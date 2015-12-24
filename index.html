@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C// DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns ="http://www.w3.org/1999/xhtml" xml:lang="en" lang ="en">
+
+<head> 
+	<meta http-equiv="Content-Type" content ="text/html; charset = utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<title> HW8 eBay shopping </title>
+	<style>
+		#logo_title{
+			display:inline;
+		}
+		#ebay_logo{
+			margin-left:10em;
+			margin-right: 0.5em;
+		}
+		.errspan{
+			color:#a1240e;
+			font-weight: bold;
+			position: absolute;
+			top: 33px;
+		}
+
+		.center_img{
+			vertical-align: middle;
+		}
+		
+		.img-responsive{
+			margin: 0 auto;
+		}
+
+		.fbshare{
+			cursor: pointer;
+		}
+
+		.p_desc{
+			position: relative;
+			top:-20px;
+		}
+
+		.res_cell{
+			padding-left: 0px;
+		}
+		.rowCell{
+			margin-left: -30px;
+		}
+		.buttonRow{
+			margin-right: 0px;
+			margin-left:  0px;
+		}
+		
+		.hidden{
+			display:none;
+		}
+
+		.res_checkbox{
+			position:relative;
+			left:-10px;
+		}
+
+		.thumbs{
+			width: 64px;
+			height: 64px;
+		}
+
+		@media (max-width: 480px) { 
+			.thumbs{
+				width: 64px;
+				height: 64px; 
+			}
+		}
+		@media (min-width: 768px){
+			.thumbs{
+				width: 74px;
+				height: 74px;
+			}
+		}
+		@media(min-width: 1024px){
+			.thumbs{
+				width: 84px;
+				height: 84px;
+			}
+		}
+		
+		@media(max-width: 1500px){
+			.modal-dialog{
+				max-height:90%;
+			}
+		}
+
+	</style>
+	
+</head>
+
+<body>
+	<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : 'fb AppId',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+	
+
+
+	
+</div>	
+		<div class="container">
+			<div class="col-sm-12 col-md-10 col-lg-10">
+				<div class='row'>
+					<span id="logo">
+						<img id="ebay_logo" src="imgs/ebay.jpg" width="85em" height="40em">  <h3 id="logo_title"> Shopping</h3> 
+					</span>
+				</div>
+				<form class = "form-horizontal" id="ebay_form">
+					<div class="form-group">				
+						<label for ="keywords" class="col-sm-4 col-md-4 control-label"> Key words: <span style='color:#a1240e'>* </span> </label>
+						<div class="col-sm-8">
+							 <Input type="text" class="form-control" id="form_keywords" name="form_keywords" placeholder="Enter keyword">
+							 	<br id="errspan_keywords_br"><span class ="errspan" id="errspan_keywords">Please enter a key word</span>
+						</div>
+					</div>
+					<div class="form-group">	
+						<label for="min_price" class="col-sm-4 control-label"> Price Range: </label>
+						<div class="col-sm-4">
+							 <Input type="text" class="form-control" id="min_price" placeholder="from($)"> 
+							 <br id="errspan_minprice_br"><span class ="errspan" id="errspan_minprice"></span>
+						</div>
+						<label for="max_price" class="sr-only">max price</label>
+						<div class=" col-sm-4">	
+							<Input type="text"  id="max_price" class="form-control" placeholder="to($)">
+							<br id="errspan_maxprice_br"><span class ="errspan" id="errspan_maxprice"></span>
+						</div>
+					</div>
+					<div class="form-group">	
+						<label class="col-sm-4 control-label"> Condition: </label>
+								<div class="col-sm-8">
+										
+										<label class="checkbox-inline" id="condition_new_label"> 
+											 <Input type="checkbox" id="condition_new" value ="new" > New
+										</label>
+									
+										<label class="checkbox-inline" id="condition_used_label">
+											<Input type="checkbox" id="condition_used" value ="used" > Used
+										</label>
+										<label class="checkbox-inline" id="condition_verygood_label">
+											<Input type="checkbox" id="condition_verygood" value ="verygood" > Very Good
+										</label>
+										<label class="checkbox-inline" id="condition_good_label">
+											<Input type="checkbox" id="condition_good" value ="good" > Good 
+										</label>
+										<label class="checkbox-inline" id="condition_acceptable_label">
+											<Input type="checkbox"  value ="acceptable" id ="condition_acceptable"> Acceptable
+										</label>
+									
+								</div>
+						</div>			
+
+					<div class="form-group">
+							<label class ="col-sm-4 control-label"> Buying formats: </label>
+							<div class="col-sm-8">
+								<label class="checkbox-inline" id="buying_format_buy_it_now_label"> 
+									<Input type="checkbox" id="buying_format_buy_it_now"  value="buy_it_now"> Buy It Now
+								</label>
+								<label class="checkbox-inline" id="buying_format_auction_label"> 
+									<Input type="checkbox" id="buying_format_auction" value="auction"> Auction
+								</label>
+								<label class="checkbox-inline" id="buying_format_classified_ads_label"> 
+									<Input type="checkbox" id="buying_format_classified_ads" value="classified_ads"> Classified Ads
+								</label>
+							</div>
+					</div>
+							
+					<div class="form-group">
+							<label class ="col-sm-4 control-label"> Seller: </label> 
+							<div class="col-sm-8">
+								<label class="checkbox-inline"> 
+									<Input type="checkbox" id="seller_seller" value="seller"> Return accepted
+								</label>
+							</div>
+					</div>
+					<div class="form-group">
+							<label class ="col-sm-4 control-label"> Shipping: </label> 
+							<div class="col-sm-8">
+								<label class="checkbox-inline">
+									<Input type="checkbox" id="shipping_free_shipping" value="free_shipping"> Free Shipping
+								</label>
+								<label class="checkbox-inline" id="shipping_exp_shipping_label">
+									<Input type="checkbox" id="shipping_exp_shipping" value="exp_shipping"> Expedited shipping
+								</label>
+							</div>
+					</div>
+					<div class="form-group">
+						<label for="max_handling_time" class="col-sm-4 control-label"></label>
+						<div class="col-sm-8">
+							<Input type="text" id="max_handling" class="form-control" placeholder="Max handling time(days):">
+								<br id="errspan_maxhandling_br"><span class ="errspan" id="errspan_maxhandling"></span>
+						</div>
+					</div>
+							
+					<div class="form-group">
+						<label for="sort_by" class="col-sm-4 control-label"> Sort by: </label>
+							<div class="col-sm-8">
+								 <select id="sort_by" class="form-control">
+										<option >Best Match</option>
+										<option >Price: highest first</option>
+										<option >Price + Shipping: highest first</option>
+										<option >Price + Shipping: lowest first</option>
+								</select>
+							</div>
+					</div>			
+					<div class="form-group">	
+						<label for ="results_per_page" class="col-sm-4 control-label"> Results per page: </label>
+							<div class="col-sm-8">
+								<select id="results_per_page" class="form-control">
+										<option >5</option>
+										<option >10</option>
+										<option >15</option>
+										<option >20</option>
+									</select>
+							</div>
+					</div>
+					<div class="row buttonRow">
+							<button type="button" class="btn btn-primary pull-right controls" id="search"> Search</button>
+							<button type="button" class="btn btn-secondary pull-right controls" id="clear" onclick="clearForm(this.form)"> Clear </button> 					
+					</div>		
+					</form>
+				</div>
+			</div>	
+		
+		<div class="container">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="row">
+						<div class="col-sm-2 col-md-2 col-lg-2"></div>
+						<div class="col-sm-10 col-md-10 col-lg-10" id="results">
+							
+						</div>
+				</div>
+				
+					<div class="col-sm-2"></div>
+					<div class="col-sm-10" id="paginationArea">
+						
+							<ul class="pagination" id="pagination_list">
+
+							</ul>
+					</div>
+				
+
+				<div id="modals"> </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="scripts/ebay-search-form.js"></script>
+</body>
+</html>
